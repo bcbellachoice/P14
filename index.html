@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fone Bluetooth Tune 510 Premium azul | BC Bella Choice</title>
-<meta name="description" content="Fone sem fio Bluetooth 5.0 on-ear com microfone, conexão em dois aparelhos e carga USB-C. Cor azul.">
+<title>Fone Bluetooth Tune 510 Premium | BC Bella Choice</title>
+<meta name="description" content="Fone sem fio Bluetooth 5.0 on-ear com microfone, conexão em dois aparelhos e carga USB-C. Azul, preto ou vermelho.">
 <meta name="theme-color" content="#f3f6fa">
 <meta property="og:title" content="Sua música e suas ligações, sem fio para enrolar">
-<meta property="og:description" content="Fone sem fio Bluetooth azul. Divulgação BC Bella Choice.">
+<meta property="og:description" content="Fone sem fio Bluetooth em 3 cores. Divulgação BC Bella Choice.">
 <meta property="og:image" content="imagem1.jpeg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%235a6b50'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='13' fill='%23f6f1e7' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@ window.BELLA_CONFIG = {
   pixelId: "",
 
   /* Paleta: "sage", "vinho", "crepusculo", "grafite" (preto), "rubi" (vermelho), "jade" (verde) "lavanda" (lilas) "rose" (rosa) "pink" (pink e prata) "perola" (branco e dourado) ou "oceano" (azul) */
-  tema: "oceano",
+  tema: "oceano",              /* paleta usada quando a cor escolhida nao tem "tema" */
 
   /* Marca e contato */
   instagram: "https://instagram.com/bcbellachoice",
@@ -33,7 +33,24 @@ window.BELLA_CONFIG = {
   linkAviso: "https://bcbellachoice.github.io/aviso-e-privacidade",
 
   /* ---- Produto ---- */
-  linkCompra: "https://pay.kaiross.com.br/xKHhreBlRdaS",  /* link de venda da Kaiross */
+  /* ---- Cores ----
+     Cada cor tem o seu link da Kaiross e as suas fotos no carrossel.
+     - id: nome curto, igual ao data-cor="..." das fotos. Tambem abre a pagina ja na cor: https://bcbellachoice.github.io/P14?cor=azul
+     - nome: como aparece para o cliente
+     - amostra: cor da bolinha (uma cor, ou duas para produto de duas cores)
+     - tema: paleta da pagina com essa cor ("" = usa o tema de cima)
+     - link: link de venda da Kaiross. Vazio ("") = a cor some da pagina.
+     - outros campos (texto, ficha...) preenchem os textos marcados com data-var no HTML.
+     A primeira cor (ou a de corInicial) e a que abre por padrao. */
+  cores: [
+    { id:"azul", nome:"Azul", amostra:["#2f5fa8"], tema:"oceano", texto:"azul", link:"https://pay.kaiross.com.br/xKHhreBlRdaS" },
+    { id:"preto", nome:"Preto", amostra:["#1c1c1c"], tema:"grafite", texto:"preta", link:"https://pay.kaiross.com.br/SrgMGb1zJJBy" },
+    { id:"vermelho", nome:"Vermelho", amostra:["#c0262e"], tema:"rubi", texto:"vermelha", link:"https://pay.kaiross.com.br/goa9XJp6ULtG" }
+  ],
+  corInicial: "",
+  rotuloCor: "Cor",
+
+  linkCompra: "",             /* so e usado se a lista de cores estiver vazia */
   preco: 89.90,               /* precisa ser o MESMO valor salvo na Kaiross */
   precoDe: 0,                 /* preco "de" riscado; 0 = nao mostra */
 
@@ -61,7 +78,7 @@ window.BELLA_CONFIG = {
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
   if (id) { fbq('init', id); fbq('track', 'PageView'); }
-  fbq('trackCustom', 'tela produto #fone-azul');
+  fbq('trackCustom', 'tela produto #fone-tune510');
 })();
 </script>
 <!-- Fim Meta Pixel -->
@@ -153,6 +170,18 @@ h1, h2 { font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif; font-
 .seta-car.ant { left:10px; } .seta-car.prox { right:10px; }
 .carrossel.um .pontos, .carrossel.um .seta-car { display:none; }
 .legenda { font-size:.72rem; color:var(--suave); margin:8px 2px 0; }
+
+/* ---------- Seletor de cor ---------- */
+.cores { margin:16px 0 0; }
+.caixa-oferta .cores { margin:18px 0 0; }
+.cores-rotulo { margin:0 0 9px; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); }
+.cores-rotulo b { color:var(--texto); font-weight:500; text-transform:none; letter-spacing:0; font-size:.95rem; }
+.cores-lista { display:flex; flex-wrap:wrap; gap:8px; }
+.cor-opcao { display:inline-flex; align-items:center; gap:8px; padding:6px 13px 6px 7px; border-radius:99px; border:1px solid var(--borda); background:var(--superficie); color:var(--texto); font:inherit; font-size:.88rem; cursor:pointer; transition:border-color .2s, box-shadow .2s, background .2s; }
+.cor-opcao .amostra { width:22px; height:22px; border-radius:50%; flex:none; box-shadow:inset 0 0 0 1px rgba(0,0,0,.16); }
+.cor-opcao[aria-pressed="true"] { border-color:var(--marca); background:var(--marca-clara); box-shadow:0 0 0 1px var(--marca); }
+.cor-opcao:focus-visible { outline:2px solid var(--marca); outline-offset:2px; }
+.slide[hidden] { display:none; }
 
 /* ---------- Preco e botao ---------- */
 .preco { margin:22px 0 14px; display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 10px; }
@@ -277,37 +306,53 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
 
 <main class="pagina">
   <header class="marca">
-    <a href="#" data-link="linkVitrine" data-evento="clique vitrine #fone-azul"><b>BC Bella Choice</b></a>
+    <a href="#" data-link="linkVitrine" data-evento="clique vitrine #fone-tune510"><b>BC Bella Choice</b></a>
     <span>acessórios</span>
   </header>
 
   <!-- 1. HEADLINE -->
   <section class="titulo">
-    <span class="etiqueta">Fone sem fio Bluetooth Tune 510 Premium · azul</span>
+    <span class="etiqueta">Fone Bluetooth Tune 510 Premium · 3 cores</span>
     <h1>Sua música e suas ligações, sem fio para enrolar</h1>
   </section>
 
   <!-- 2. CARROSSEL DE FOTOS
        - Coloque os arquivos na mesma pasta deste HTML, com estes nomes.
-       - Esta pagina nao tem video. Para colocar um, adicione esta linha antes das fotos:
-         <div class="slide"><video src="video1.mp4" muted playsinline preload="metadata"></video></div>
-       - Mais fotos? Copie uma linha <div class="slide">...</div> e troque o nome do arquivo.
-       - Menos fotos? Apague a linha da foto que nao existir.
+       - data-cor="..." diz de qual cor e a foto (o mesmo id da lista de cores no topo).
+         Foto sem data-cor aparece em todas as cores.
+       - Mais fotos? Copie uma linha <div class="slide"...>...</div> e troque o nome do arquivo.
+       - Video: <div class="slide" data-cor="ID"><video src="video1.mp4" muted playsinline preload="metadata"></video></div>
        -->
   <div class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Fotos do produto">
     <div class="trilho">
 
-      <div class="slide"><img src="imagem1.jpeg" alt="Fone sem fio Bluetooth Tune 510 Premium azul"></div>
-      <div class="slide"><img src="imagem2.jpeg" alt="Fone azul visto de lado"></div>
-      <div class="slide"><img src="imagem3.jpeg" alt="Detalhe dos botões do fone"></div>
+      <!-- FOTOS DA COR: azul -->
+      <div class="slide" data-cor="azul"><img src="imagem1.jpeg" alt="Fone sem fio Bluetooth Tune 510 Premium azul"></div>
+      <div class="slide" data-cor="azul"><img src="imagem2.jpeg" alt="Fone azul visto de lado" loading="lazy"></div>
+      <div class="slide" data-cor="azul"><img src="imagem3.jpeg" alt="Detalhe dos botões do fone azul" loading="lazy"></div>
+
+      <!-- FOTOS DA COR: preto -->
+      <div class="slide" data-cor="preto"><img src="imagem4.jpeg" alt="Fone sem fio Bluetooth Tune 510 Premium preto" loading="lazy"></div>
+      <div class="slide" data-cor="preto"><img src="imagem5.jpeg" alt="Fone preto visto de lado" loading="lazy"></div>
+      <div class="slide" data-cor="preto"><img src="imagem6.jpeg" alt="Detalhe dos botões do fone preto" loading="lazy"></div>
+      <div class="slide" data-cor="preto"><img src="imagem7.jpeg" alt="Fone preto dobrado" loading="lazy"></div>
+      <div class="slide" data-cor="preto"><img src="imagem8.jpeg" alt="Fone preto em uso" loading="lazy"></div>
+
+      <!-- FOTOS DA COR: vermelho -->
+      <div class="slide" data-cor="vermelho"><img src="imagem9.jpeg" alt="Fone sem fio Bluetooth Tune 510 Premium vermelho" loading="lazy"></div>
+      <div class="slide" data-cor="vermelho"><img src="imagem10.jpeg" alt="Fone vermelho visto de lado" loading="lazy"></div>
+      <div class="slide" data-cor="vermelho"><img src="imagem11.jpeg" alt="Detalhe dos botões do fone vermelho" loading="lazy"></div>
+      <div class="slide" data-cor="vermelho"><img src="imagem12.jpeg" alt="Fone vermelho dobrado" loading="lazy"></div>
+      <div class="slide" data-cor="vermelho"><img src="imagem13.jpeg" alt="Fone vermelho em uso" loading="lazy"></div>
 
     </div>
   </div>
   <p class="legenda">Imagens ilustrativas.</p>
+  <div class="cores" data-cores></div>
 
   <!-- 3. SUBHEADLINE E BOTAO "VER OFERTA" (leva ate a caixa da oferta) -->
   <p class="sub">Fone Bluetooth 5.0 que apoia sobre as orelhas, com microfone para atender ligações, conexão com dois aparelhos ao mesmo tempo e carga por USB-C.</p>
-  <a class="botao botao-topo" href="#oferta" data-evento="clique ver oferta #fone-azul">Ver oferta<svg class="icone"><use href="#i-baixo"/></svg></a>
+  <a class="botao botao-topo" href="#oferta" data-evento="clique ver oferta #fone-tune510">Ver oferta<svg class="icone"><use href="#i-baixo"/></svg></a>
 
   <!-- 4. MOTIVOS PARA COMPRAR -->
   <div class="grupo surge">Vale a pena</div>
@@ -348,11 +393,12 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
     <h2>Liberdade para ouvir onde quiser</h2>
     <p class="oferta-texto">Chega de fio enroscando na bolsa, puxando o celular da mesa ou quebrando no conector. Coloca o fone, conecta e vai: na rua, na academia ou numa chamada de trabalho.</p>
     <ul class="lista-check">
-      <li><svg class="icone"><use href="#i-check"/></svg>Bluetooth 5.0 com conexão em dois aparelhos</li>
+      <li><svg class="icone"><use href="#i-check"/></svg>Bluetooth 5.0 em dois aparelhos</li>
       <li><svg class="icone"><use href="#i-check"/></svg>Microfone para ligações</li>
       <li><svg class="icone"><use href="#i-check"/></svg>Carga por USB-C, cabo incluso</li>
-      <li><svg class="icone"><use href="#i-check"/></svg>Cor azul</li>
+      <li><svg class="icone"><use href="#i-check"/></svg><span>Cor <span data-var="texto">azul</span></span></li>
     </ul>
+    <div class="cores" data-cores></div>
     <div class="preco" data-preco></div>
     <p class="ancora">Um acessório que você usa todo dia, com frete grátis até a sua casa.</p>
     <a class="botao botao-oferta" href="#" data-comprar="oferta"><span data-texto-botao>Quero o meu fone</span><svg class="icone"><use href="#i-seta"/></svg></a>
@@ -374,7 +420,7 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
       <tr><th>Impedância</th><td>32 ohms</td></tr>
       <tr><th>Sensibilidade</th><td>103,5&nbsp;dB SPL a 1&nbsp;kHz</td></tr>
       <tr><th>Volume máximo</th><td>95&nbsp;dB</td></tr>
-      <tr><th>Cor</th><td>Azul</td></tr>
+      <tr><th>Cor</th><td data-var="nome">Azul</td></tr>
       <tr><th>Na embalagem</th><td>1 fone, 1 cabo USB-C e guia rápido</td></tr>
     </table>
   </section>
@@ -423,10 +469,10 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
   <!-- 10. RODAPE -->
   <footer class="rodape">
     <nav>
-      <a href="#" data-link="linkVitrine" data-evento="clique vitrine rodape #fone-azul">Ver a vitrine</a>
-      <a href="#" data-link="linkAviso" data-evento="clique aviso e privacidade #fone-azul">Aviso e privacidade</a>
-      <a href="#" data-link="instagram" target="_blank" rel="noopener" data-evento="clique instagram #fone-azul">Instagram</a>
-      <a href="#" data-email data-evento="clique email #fone-azul">E-mail</a>
+      <a href="#" data-link="linkVitrine" data-evento="clique vitrine rodape #fone-tune510">Ver a vitrine</a>
+      <a href="#" data-link="linkAviso" data-evento="clique aviso e privacidade #fone-tune510">Aviso e privacidade</a>
+      <a href="#" data-link="instagram" target="_blank" rel="noopener" data-evento="clique instagram #fone-tune510">Instagram</a>
+      <a href="#" data-email data-evento="clique email #fone-tune510">E-mail</a>
     </nav>
     <p>A BC Bella Choice é apenas uma página de divulgação. Não fabricamos, não vendemos e não entregamos os produtos apresentados. Venda, pagamento, envio, garantia e atendimento são de responsabilidade da plataforma de vendas e do fornecedor de cada produto. Nosso Instagram e e-mail servem só para assuntos da divulgação.</p>
     <p>Este site não faz parte do Facebook, do Instagram ou da Meta Platforms, Inc. e não é endossado por eles de forma alguma. Facebook e Instagram são marcas registradas da Meta Platforms, Inc.</p>
@@ -452,6 +498,7 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
   var preco = +C.preco || 0;
   var gratis = String(C.frete).toLowerCase() !== "cliente";
   var previsto = +C.fretePrevisto || 0;
+  var cores = (C.cores || []).filter(function (v) { return v && v.id && v.link; }), corAtual = null;
 
   /* ---------- Preco e frete ---------- */
   var htmlFrete = gratis
@@ -475,8 +522,8 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
       a.querySelector("[data-texto-botao]").textContent = "Esgotado. Avise-me pelo Instagram";
     } else a.href = C.linkCompra || "#";
     a.addEventListener("click", function () {
-      evento(esgotado ? "clique esgotado #fone-azul" : "clique comprar " + a.getAttribute("data-comprar") + " #fone-azul",
-        { produto: "fone bluetooth tune 510 azul", preco: preco });
+      evento(esgotado ? "clique esgotado #fone-tune510" : "clique comprar " + a.getAttribute("data-comprar") + " #fone-tune510",
+        { produto: "fone bluetooth tune 510", cor: corAtual ? corAtual.nome : "", preco: preco });
     });
   });
 
@@ -499,49 +546,63 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
       itens.forEach(function (o) { o.classList.remove("aberto"); o.querySelector(".pergunta").setAttribute("aria-expanded", "false"); });
       if (abrir) {
         item.classList.add("aberto"); bt.setAttribute("aria-expanded", "true");
-        evento("pergunta faq #fone-azul", { pergunta: bt.textContent.trim() });
+        evento("pergunta faq #fone-tune510", { pergunta: bt.textContent.trim() });
       }
     });
   });
 
-  /* ---------- Carrossel ---------- */
+  /* ---------- Carrossel (mostra so as fotos da cor escolhida) ---------- */
   var car = doc.getElementById("carrossel"), trilho = car.querySelector(".trilho");
-  var slides = $$(".slide", trilho), atual = 0, timer = null, parado = false;
-  slides.forEach(function (s) {
+  var todos = $$(".slide", trilho), slides = [], atual = 0, timer = null, parado = false;
+  todos.forEach(function (s) {
     var m = s.querySelector("img, video");
     if (!m) return;
     s.setAttribute("data-arquivo", m.getAttribute("src"));
     m.addEventListener("error", function () { s.classList.add("faltando"); if (slides[atual] === s) agenda(); });
-    if (m.tagName === "IMG") { m.decoding = "async"; if (s !== slides[0]) m.loading = "lazy"; }
-    if (m.tagName === "VIDEO") m.addEventListener("ended", function () { ir(atual + 1); });
+    if (m.tagName === "IMG") m.decoding = "async";
+    if (m.tagName === "VIDEO") m.addEventListener("ended", function () { if (slides[atual] === s) ir(atual + 1); });
   });
-  if (slides.length < 2) car.classList.add("um");
-  else {
-    var pontos = doc.createElement("div"); pontos.className = "pontos";
+  var pontos = doc.createElement("div"); pontos.className = "pontos"; car.appendChild(pontos);
+  ["ant", "prox"].forEach(function (lado) {
+    var b = doc.createElement("button"); b.type = "button"; b.className = "seta-car " + lado;
+    b.setAttribute("aria-label", lado === "ant" ? "Anterior" : "Próxima");
+    b.innerHTML = '<svg class="icone"><use href="#i-' + (lado === "ant" ? "esq" : "dir") + '"/></svg>';
+    b.onclick = function () { ir(atual + (lado === "ant" ? -1 : 1), true); }; car.appendChild(b);
+  });
+  /* monta o carrossel com as fotos da cor (fotos sem data-cor aparecem em todas) */
+  function montar(cor) {
+    var lista = todos.filter(function (s) {
+      var c = s.getAttribute("data-cor");
+      return !c || !cor || (" " + c + " ").indexOf(" " + cor + " ") > -1;
+    });
+    if (lista.length === slides.length && lista.every(function (s, i) { return s === slides[i]; })) return false;
+    slides = lista;
+    todos.forEach(function (s) {
+      s.hidden = slides.indexOf(s) < 0;
+      var v = s.querySelector("video"); if (v) v.pause();
+    });
+    slides.forEach(function (s, i) { var m = s.querySelector("img"); if (m) m.loading = i < 2 ? "eager" : "lazy"; });
+    car.classList.toggle("um", slides.length < 2);
+    pontos.innerHTML = "";
     slides.forEach(function (s, i) {
       var b = doc.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Mostrar item " + (i + 1));
       b.onclick = function () { ir(i, true); }; pontos.appendChild(b);
     });
-    car.appendChild(pontos);
-    ["ant", "prox"].forEach(function (lado) {
-      var b = doc.createElement("button"); b.type = "button"; b.className = "seta-car " + lado;
-      b.setAttribute("aria-label", lado === "ant" ? "Anterior" : "Próxima");
-      b.innerHTML = '<svg class="icone"><use href="#i-' + (lado === "ant" ? "esq" : "dir") + '"/></svg>';
-      b.onclick = function () { ir(atual + (lado === "ant" ? -1 : 1), true); }; car.appendChild(b);
-    });
+    trilho.style.transition = "none"; ir(0); void trilho.offsetWidth; trilho.style.transition = "";
+    return true;
   }
   function ir(i, manual) {
     if (!slides.length) return;
     atual = (i + slides.length) % slides.length;
     trilho.style.transform = "translateX(" + (-100 * atual) + "%)";
     $$(".pontos button", car).forEach(function (b, j) { b.setAttribute("aria-current", j === atual); });
-    slides.forEach(function (s, j) {
+    todos.forEach(function (s) {
       var v = s.querySelector("video");
       if (!v) return;
-      if (j === atual && !s.classList.contains("faltando")) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      if (s === slides[atual] && !s.classList.contains("faltando")) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
       else v.pause();
     });
-    if (manual) evento("ver foto #fone-azul", { item: atual + 1 });
+    if (manual) evento("ver foto #fone-tune510", { item: atual + 1, cor: corAtual ? corAtual.nome : "" });
     agenda();
   }
   function agenda() {
@@ -569,7 +630,45 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
       if (en[0].isIntersecting) { parado = false; agenda(); } else { parado = true; clearTimeout(timer); }
     }).observe(car);
   }
-  ir(0);
+
+  /* ---------- Seletor de cor ----------
+     Troca fotos, paleta, textos com data-var e o link do botao de compra.
+     Cor sem link na configuracao nao aparece. O endereco ?cor=id abre ja na cor. */
+  function escolher(v, manual) {
+    if (!v || corAtual === v) return;
+    corAtual = v;
+    if (v.tema && temas.indexOf(v.tema) > -1) doc.documentElement.setAttribute("data-tema", v.tema);
+    var meta = doc.querySelector('meta[name="theme-color"]'), fundo = getComputedStyle(doc.documentElement).getPropertyValue("--fundo").trim();
+    if (meta && fundo) meta.setAttribute("content", fundo);
+    $$("[data-var]").forEach(function (el) { var t = v[el.getAttribute("data-var")]; if (t != null) el.textContent = t; });
+    $$(".cor-opcao").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-id") === v.id); });
+    if (!esgotado) $$("[data-comprar]").forEach(function (a) { a.href = v.link; });
+    montar(v.id);
+    if (manual) {
+      evento("escolher cor #fone-tune510", { cor: v.nome });
+      try { var u = new URL(location.href); u.searchParams.set("cor", v.id); history.replaceState(null, "", u.href); } catch (e) {}
+    }
+  }
+  var rotulo = C.rotuloCor || "Cor";
+  $$("[data-cores]").forEach(function (caixa) {
+    if (cores.length < 2) { caixa.remove(); return; }
+    caixa.innerHTML = '<p class="cores-rotulo">' + rotulo + ': <b data-var="nome"></b></p><div class="cores-lista" role="group"></div>';
+    var lista = caixa.querySelector(".cores-lista");
+    lista.setAttribute("aria-label", "Escolha a " + rotulo.toLowerCase());
+    cores.forEach(function (v) {
+      var am = [].concat(v.amostra || "#cccccc");
+      var b = doc.createElement("button"); b.type = "button"; b.className = "cor-opcao"; b.setAttribute("data-id", v.id);
+      var bola = doc.createElement("span"); bola.className = "amostra";
+      bola.style.background = am.length > 1 ? "linear-gradient(135deg," + am[0] + " 50%," + am[1] + " 50%)" : am[0];
+      b.appendChild(bola); b.appendChild(doc.createTextNode(v.nome));
+      b.addEventListener("click", function () { escolher(v, true); });
+      lista.appendChild(b);
+    });
+  });
+  var pedida = (location.search.match(/[?&]cor=([\w-]+)/) || [])[1];
+  var inicial = cores.filter(function (v) { return v.id === pedida; })[0] ||
+    cores.filter(function (v) { return v.id === C.corInicial; })[0] || cores[0];
+  if (inicial) escolher(inicial, false); else montar(null);
 
   /* ---------- Animacao de entrada e eventos de leitura ---------- */
   var surge = $$(".surge");
@@ -585,7 +684,7 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
         if (x.isIntersecting && !vistos[n]) { vistos[n] = 1; evento(n); obs.unobserve(x.target); }
       });
     }, { threshold: .4 });
-    [[".passos", "viu como usar #fone-azul"], [".ficha", "viu detalhes #fone-azul"], [".faq", "viu faq #fone-azul"]].forEach(function (m) {
+    [[".passos", "viu como usar #fone-tune510"], [".ficha", "viu detalhes #fone-tune510"], [".faq", "viu faq #fone-tune510"]].forEach(function (m) {
       var el = doc.querySelector(m[0]); if (el) { el.setAttribute("data-visto", m[1]); obs.observe(el); }
     });
   } else surge.forEach(function (el) { el.classList.add("visivel"); });
@@ -593,3 +692,4 @@ h2 { font-size:1.75rem; margin-bottom:16px; }
 </script>
 </body>
 </html>
+
